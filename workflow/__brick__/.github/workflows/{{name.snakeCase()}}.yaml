@@ -1,0 +1,70 @@
+{{=<% %>=}}
+name: <% #snakeCase %><% name %><% /snakeCase %>
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  APP_DIRECTORY: packages/<% #snakeCase %><% name %><% /snakeCase %>
+
+concurrency:
+  group: ${{ {{github.workflow}} }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    uses: zweidenker/flutter_workflows/.github/workflows/melos_quality_checks.yaml@v1.0.1
+{{#android}}
+  build_android:
+    needs: quality
+    uses: zweidenker/flutter_workflows/.github/workflows/build_android.yaml@v1.0.1
+    with:
+      appDirectory: packages/<% #snakeCase %><% name %><% /snakeCase %>
+      buildApk: false
+      upload: ${{ github.ref_name == 'main' }}
+    secrets:
+      keyStore: ${{ secrets.ANDROID_KEYSTORE }}
+      keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+      googleApiKey: ${{ secrets.GOOGLE_API_KEY }}
+{{/android}}
+{{#ios}}
+  build_ios:
+    needs: quality
+    uses: zweidenker/flutter_workflows/.github/workflows/build_ios.yaml@v1.0.1
+    with:
+      appDirectory: packages/<% #snakeCase %><% name %><% /snakeCase %>
+      fastlaneEnv: <% #snakeCase %><% name %><% /snakeCase %>
+      upload: ${{ github.ref_name == 'main' }}
+    secrets:
+      matchPassword: ${{ secrets.MATCH_PASSWORD }}
+      apiKey: ${{ secrets.IOS_API_KEY }}
+      matchSSHKey: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
+{{/ios}}
+
+  report:
+    name: Report to Slack
+    needs: [{{#android}}
+      build_android,{{/android}}{{#ios}}
+      build_ios,{{/ios}}
+      quality
+    ]
+    if: ${{ always() && !cancelled() && github.ref_name == 'main'}}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: martialonline/workflow-status@v3
+        id: check
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "<% #titleCase %><% name %><% /titleCase %>"
+          SLACK_ICON: "<% slackImg %>"
+          SLACK_COLOR: ${{ steps.check.outputs.status }}
+          SLACK_FOOTER: ''
