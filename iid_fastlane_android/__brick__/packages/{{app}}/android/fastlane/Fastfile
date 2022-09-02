@@ -1,0 +1,16 @@
+fastlane_version "2.28.3"
+
+default_platform :android
+
+platform :android do
+
+  desc "Deploy App to Internal Google Play Track"
+  lane :uploadApp do |options|
+    supply(
+        aab: "../build/app/outputs/bundle/release/app-release.aab",
+        json_key_data: ENV['GOOGLE_UPLOAD_KEY'],
+        track: "internal"
+    )
+  end
+end
+
