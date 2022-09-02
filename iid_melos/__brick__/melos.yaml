@@ -1,0 +1,66 @@
+name: {{name}}
+
+packages:
+  - packages/**
+
+scripts:
+
+  setup:
+    run: |
+      melos run gen:l10n --no-select
+
+  pub:upgrade:
+    run: |
+      melos exec -c 1 -- \
+        "flutter pub upgrade"
+
+  pub:build_runner:
+    run: |
+      melos exec -c 1 -- \
+        "flutter pub run build_runner build --delete-conflicting-outputs"
+
+  gen:l10n:
+    run: |
+      melos exec -c 1 -- \ 
+        "flutter gen-l10n"
+    select-package:
+      file-exists:
+        - l10n.yaml
+
+  lint:all:
+    run: |
+      melos run lint:analyze && melos run lint:format
+
+  lint:analyze:
+    run: |
+      melos exec -c 5 -- \
+        "dart analyze . --fatal-infos"
+
+  lint:format:
+    run: |
+      melos exec -c 1 -- \
+        "flutter format . --set-exit-if-changed"
+
+  test:all:
+    run: melos run test --no-select
+
+  test:
+    run: |
+      melos exec -c 1 -- \
+        "mkdir -p test_results && flutter test --machine | tojunit -o MELOS_PACKAGE_PATH/test_results/output.xml"
+    select-package:
+      dir-exists:
+        - test
+      ignore: "*example*"
+
+  test:coverage:all:
+    run: melos run test:coverage --no-select
+
+  test:coverage:
+    run: |
+      melos exec -c 1 -- \
+        "mkdir -p coverage && flutter test --coverage"
+    select-package:
+      dir-exists:
+        - test
+      ignore: "*example*"
