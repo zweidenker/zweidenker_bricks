@@ -1,0 +1,47 @@
+name: iid_fastlane_ios
+description: Sets up iOS Fastlane Configuration
+
+# The following defines the version and build number for your brick.
+# A version number is three numbers separated by dots, like 1.2.34
+# followed by an optional build number (separated by a +).
+version: 0.1.0+1
+
+# The following defines the environment for the current brick.
+# It includes the version of mason that the brick requires.
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+# Variables specify dynamic values that your brick depends on.
+# Zero or more variables can be specified for a given brick.
+# Each variable has:
+#  * a type (string, number, boolean, enum, or array)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+vars:
+  app:
+    type: string
+    description: App Folder
+    prompt: What App should get signing
+  environment:
+    type: string
+    description: Fastlane Environment
+    prompt: What should the Fastlane Environment be called?
+  bundleId:
+    type: string
+    description: Bundle Id
+    prompt: Whats the App Bundle Id?
+  teamId:
+    type: string
+    description: AppStore TeamId
+    prompt: What's the AppStore TeamId?
+  matchRepo:
+    type: string
+    description: Match Repository
+    prompt: git url for Match Repository?
+  matchBranch:
+    type: string
+    description: Match Branch
+    prompt: Branch for Profiles (one branch per Apple Team)?

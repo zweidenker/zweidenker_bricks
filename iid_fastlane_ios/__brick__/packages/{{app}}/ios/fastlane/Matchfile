@@ -1,0 +1,4 @@
+git_url("{{matchRepo}}")
+git_branch("{{matchBranch}}")
+type("development")
+app_identifier(["{{bundleId}}"])
