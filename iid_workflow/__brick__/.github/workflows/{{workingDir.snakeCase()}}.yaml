@@ -1,5 +1,5 @@
 {{=<% %>=}}
-name: <% #snakeCase %><% name %><% /snakeCase %>
+name: <% #snakeCase %><% workingDir %><% /snakeCase %>
 
 on:
   workflow_dispatch:
@@ -64,7 +64,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "<% #titleCase %><% name %><% /titleCase %>"
+          SLACK_USERNAME: "<% #titleCase %><% workingDir %><% /titleCase %>"
           SLACK_ICON: "<% slackImg %>"
           SLACK_COLOR: ${{ steps.check.outputs.status }}
           SLACK_FOOTER: ''
