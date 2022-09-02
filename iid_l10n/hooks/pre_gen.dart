@@ -26,7 +26,7 @@ Future<void> run(HookContext context) async {
   checkProgress.complete('Flutter Generate Enabled');
   final pubProgress = context.logger.progress('Adding Dependencies');
   // Add pub dependencies
-  await Process.run('mkdir', ['lib/l10n'], workingDirectory: directory);
+  await Process.run('mkdir', ['-p', 'lib/l10n'], workingDirectory: directory);
   await Process.run('flutter', ['pub', 'add', 'intl'], workingDirectory: directory);
   await Process.run('flutter', ['pub', 'add', 'flutter_localizations', '--sdk=flutter'], workingDirectory: directory);
 

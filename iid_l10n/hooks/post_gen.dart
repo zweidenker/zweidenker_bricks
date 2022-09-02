@@ -5,7 +5,7 @@ import 'package:recase/recase.dart';
 
 Future<void> run(HookContext context) async {
   final directory = 'packages/${(context.vars['name'] as String).snakeCase}';
-  // Write to gitignore if File does not exist yet
+  // Write to gitignore if Line does not exist yet
   const pattern = '**/poeditor.properties';
   const fileName = '.gitignore';
   const writeCommand = '''
