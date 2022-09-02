@@ -6,4 +6,4 @@ Collection of [mason](https://github.com/felangel/mason) bricks used at [ZWEIDEN
 
 | Brick                | Description                                                                                             |
 |----------------------|---------------------------------------------------------------------------------------------------------|
-| [workflow](workflow) | Creates a github Workflow based on [flutter_workflows](https://github.com/zweidenker/flutter_workflows) |
+| [iid_workflow](iid_workflow) | Creates a github Workflow based on [flutter_workflows](https://github.com/zweidenker/flutter_workflows) |

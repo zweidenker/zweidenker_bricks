@@ -1,7 +1,7 @@
-name: workflow
-description: Creates a Github Workflow
+name: iid_workflow
+description: Creates a Github Workflow based on ZWEIDENKER's Flutter Workflows
 
-version: 1.0.0
+version: 0.1.0
 
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
