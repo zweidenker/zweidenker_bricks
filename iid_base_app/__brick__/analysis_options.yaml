@@ -1,0 +1,9 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_print: true
+    always_use_package_imports: true
+    use_super_parameters: true
+    unnecessary_parenthesis: true
+    require_trailing_commas: true
