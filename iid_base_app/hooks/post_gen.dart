@@ -7,7 +7,7 @@ Future<void> run(HookContext context) async {
   const pattern = '**/coverage/';
   const fileName = '.gitignore';
   const writeCommand = '''
-grep -q "$pattern" "$fileName" || echo "$pattern" >> "$fileName"
+grep -qF "$pattern" "$fileName" || echo "$pattern" >> "$fileName"
 ''';
 
   await Process.run('bash', ['-c', writeCommand]);
