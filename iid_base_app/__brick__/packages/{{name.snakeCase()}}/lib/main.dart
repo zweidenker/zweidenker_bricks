@@ -1,6 +1,6 @@
-import 'package:app/src/providers.dart';
+import 'package:{{name.snakeCase()}}/src/providers.dart';
 import 'package:flutter/widgets.dart';
-import 'package:app/src/app_app.dart';
+import 'package:{{name.snakeCase()}}/src/{{name.snakeCase()}}_app.dart';
 
 void main() {
   runApp(

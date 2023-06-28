@@ -1,4 +1,4 @@
-import 'package:app/src/repository.dart';
+import 'package:{{name.snakeCase()}}/src/repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
