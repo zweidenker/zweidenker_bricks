@@ -18,7 +18,7 @@ concurrency:
 jobs:
   quality:
     uses: zweidenker/flutter_workflows/.github/workflows/melos_quality_checks.yaml@v1.0.1
-{{#android}}
+<%#android%>
   build_android:
     needs: quality
     uses: zweidenker/flutter_workflows/.github/workflows/build_android.yaml@v1.0.1
@@ -32,8 +32,8 @@ jobs:
       keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
       keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
       googleApiKey: ${{ secrets.GOOGLE_API_KEY }}
-{{/android}}
-{{#ios}}
+<%/android%>
+<%#ios%>
   build_ios:
     needs: quality
     uses: zweidenker/flutter_workflows/.github/workflows/build_ios.yaml@v1.0.1
@@ -45,13 +45,12 @@ jobs:
       matchPassword: ${{ secrets.MATCH_PASSWORD }}
       apiKey: ${{ secrets.IOS_API_KEY }}
       matchSSHKey: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
-{{/ios}}
-
+<%/ios%>
   report:
     name: Report to Slack
-    needs: [{{#android}}
-      build_android,{{/android}}{{#ios}}
-      build_ios,{{/ios}}
+    needs: [<%#android%>
+      build_android,<%/android%><%#ios%>
+      build_ios,<%/ios%>
       quality
     ]
     if: ${{ always() && !cancelled() && github.ref_name == 'main'}}
