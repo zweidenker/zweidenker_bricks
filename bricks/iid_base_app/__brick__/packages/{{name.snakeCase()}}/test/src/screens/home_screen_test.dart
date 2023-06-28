@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../lib/src/screens/home_screen.dart';
+import 'package:{{name.snakeCase()}}/src/screens/home_screen.dart';
 import '../../tool/mocks.dart';
 import '../../tool/test_app.dart';
 
