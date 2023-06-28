@@ -17,11 +17,11 @@ concurrency:
 
 jobs:
   quality:
-    uses: zweidenker/flutter_workflows/.github/workflows/melos_quality_checks.yaml@v1.0.1
+    uses: zweidenker/flutter_workflows/.github/workflows/melos_quality_checks.yaml@v2
 <%#android%>
   build_android:
     needs: quality
-    uses: zweidenker/flutter_workflows/.github/workflows/build_android.yaml@v1.0.1
+    uses: zweidenker/flutter_workflows/.github/workflows/build_android.yaml@v2
     with:
       appDirectory: packages/<% #snakeCase %><% name %><% /snakeCase %>
       buildApk: false
@@ -36,7 +36,7 @@ jobs:
 <%#ios%>
   build_ios:
     needs: quality
-    uses: zweidenker/flutter_workflows/.github/workflows/build_ios.yaml@v1.0.1
+    uses: zweidenker/flutter_workflows/.github/workflows/build_ios.yaml@v2
     with:
       appDirectory: packages/<% #snakeCase %><% name %><% /snakeCase %>
       fastlaneEnv: <% #snakeCase %><% name %><% /snakeCase %>
