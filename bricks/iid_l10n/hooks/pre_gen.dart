@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
-import 'package:recase/recase.dart';
+
 import 'package:yaml/yaml.dart';
 import 'package:yaml_writer/yaml_writer.dart';
 

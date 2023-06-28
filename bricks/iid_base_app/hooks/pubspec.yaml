@@ -5,4 +5,3 @@ environment:
 
 dependencies:
   mason: ^0.1.0-dev
-  recase: ^4.0.0

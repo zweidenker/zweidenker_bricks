@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
-import 'package:recase/recase.dart';
 
 Future<void> run(HookContext context) async {
   const pattern = '**/coverage/';

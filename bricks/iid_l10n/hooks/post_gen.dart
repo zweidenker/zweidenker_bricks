@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
-import 'package:recase/recase.dart';
+
 
 Future<void> run(HookContext context) async {
   final directory = 'packages/${(context.vars['name'] as String).snakeCase}';

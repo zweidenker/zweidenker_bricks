@@ -1,9 +1,6 @@
 import 'dart:io';
 
 import 'package:mason/mason.dart';
-import 'package:recase/recase.dart';
-import 'package:yaml/yaml.dart';
-import 'package:yaml_writer/yaml_writer.dart';
 
 Future<void> run(HookContext context) async {
   final themeDirectory = 'packages/${context.vars['prefix']}_theme';
