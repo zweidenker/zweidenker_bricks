@@ -29,12 +29,14 @@ vars:
   apiToken:
     type: string
     description: POEditor Api Token
+    prompt: POEditor Api Token
   projectId:
     type: string
     description: POEditor ProjectId
-  languages:
-    type: array
-    description: Languages
-    values: ["en", "de"]
-    defaults: ["en", "de"]
+    prompt: POEditor ProjectId
+  rawLanguages:
+    type: string
+    prompt: Languages (Input Language code as comma separated)
+    description: Languages (Input Language code as comma separated)
+    default: "en,de"
   

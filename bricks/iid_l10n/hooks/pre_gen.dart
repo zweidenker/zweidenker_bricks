@@ -6,6 +6,9 @@ import 'package:yaml/yaml.dart';
 import 'package:yaml_writer/yaml_writer.dart';
 
 Future<void> run(HookContext context) async {
+  context.vars['languages'] =
+      (context.vars['rawLanguages'] as String).split(',');
+
   final directory = 'packages/${(context.vars['name'] as String).snakeCase}';
   // Check if flutter generate is true
   final checkProgress = context.logger.progress('Checking Flutter Generate');
@@ -17,7 +20,9 @@ Future<void> run(HookContext context) async {
 
   if (flutterGenerate != true) {
     // Flutter Generate is not enabled
-    checkProgress.update('Flutter generate: true is not set in pubspec.yaml. Updating now');
+    checkProgress.update(
+      'Flutter generate: true is not set in pubspec.yaml. Updating now',
+    );
     final adjustedPubspec = Map.of(pubspec);
     adjustedPubspec['flutter'] = Map.of(pubspec['flutter']);
     adjustedPubspec['flutter']['generate'] = true;
@@ -27,8 +32,13 @@ Future<void> run(HookContext context) async {
   final pubProgress = context.logger.progress('Adding Dependencies');
   // Add pub dependencies
   await Process.run('mkdir', ['-p', 'lib/l10n'], workingDirectory: directory);
-  await Process.run('flutter', ['pub', 'add', 'intl'], workingDirectory: directory);
-  await Process.run('flutter', ['pub', 'add', 'flutter_localizations', '--sdk=flutter'], workingDirectory: directory);
+  await Process.run('flutter', ['pub', 'add', 'intl'],
+      workingDirectory: directory);
+  await Process.run(
+    'flutter',
+    ['pub', 'add', 'flutter_localizations', '--sdk=flutter'],
+    workingDirectory: directory,
+  );
 
   pubProgress.complete('Dependencies Added');
 }
