@@ -5,8 +5,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: const Text('{{name.pascalCase()}} - Home'))
+    return const Scaffold(
+      body: Center(
+        child: Text('{{name.pascalCase()}} - Home'),
+      ),
     );
   }
 }
