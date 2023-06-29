@@ -39,7 +39,7 @@ scripts:
   lint:format:
     run: |
       melos exec -c 1 -- \
-        "flutter format . --set-exit-if-changed"
+        "dart format . --set-exit-if-changed"
 
   test:all:
     run: melos run test --no-select
@@ -47,7 +47,7 @@ scripts:
   test:
     run: |
       melos exec -c 1 -- \
-        "mkdir -p test_results && flutter test --machine | tojunit -o MELOS_PACKAGE_PATH/test_results/output.xml"
+        "flutter test"
     select-package:
       dir-exists:
         - test
