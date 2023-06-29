@@ -37,8 +37,6 @@ class {{prefix.pascalCase()}}Theme {
         _withBrightness(light: ThemeData.light(), dark: ThemeData.dark());
     final textTheme = _textTheme(baseTheme.textTheme);
 
-
-
     final colorScheme = baseTheme.colorScheme.copyWith(
       primary: {{prefix.pascalCase()}}Colors.primary,
       secondary: {{prefix.pascalCase()}}Colors.primary,
@@ -51,7 +49,6 @@ class {{prefix.pascalCase()}}Theme {
       primaryColor: colorScheme.primary,
       indicatorColor: colorScheme.primary,
       colorScheme: colorScheme,
-      toggleableActiveColor: colorScheme.primary,
       textSelectionTheme: baseTheme.textSelectionTheme.copyWith(
         selectionHandleColor: colorScheme.primary,
         selectionColor: colorScheme.primary.withOpacity(0.4),
@@ -67,12 +64,56 @@ class {{prefix.pascalCase()}}Theme {
           dark: Colors.white54,
         ),
       ),
-    
       scaffoldBackgroundColor: windowBackground,
       textTheme: textTheme,
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return null;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary;
+          }
+          return null;
+        }),
+      ),
+      radioTheme: RadioThemeData(
+        fillColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return null;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary;
+          }
+          return null;
+        }),
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return null;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary;
+          }
+          return null;
+        }),
+        trackColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return null;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return colorScheme.primary;
+          }
+          return null;
+        }),
+      ),
     );
   }
-
 
   TextTheme _textTheme(TextTheme baseTheme) {
     const fontPackage = '{{prefix.snakeCase()}}_theme';
@@ -135,7 +176,6 @@ class {{prefix.pascalCase()}}Theme {
       ),
     );
   }
-
 
   T _withBrightness<T>({required T light, required T dark}) {
     if (brightness == Brightness.dark) {
