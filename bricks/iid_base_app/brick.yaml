@@ -31,4 +31,9 @@ vars:
     description: Organization Identifier
     prompt: What should the Org Identifier be (Package/Bundle Prefix)
     default: de.zweidenker
-
+  platforms:
+    type: array
+    description: Platforms that should get created by Flutter
+    prompt: Select Platforms
+    values: ['android', 'ios', 'macos', 'web', 'windows', 'linux']
+    defaults: ['android', 'ios']
