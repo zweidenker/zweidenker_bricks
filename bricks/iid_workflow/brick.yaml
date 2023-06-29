@@ -21,7 +21,7 @@ vars:
   name:
     type: string
     description: Package name
-    default: main
+    default: app
     prompt: What is the package name?
   android:
     type: boolean
