@@ -15,5 +15,6 @@ grep -qF "$pattern" "$fileName" || echo "$pattern" >> "$fileName"
 
   final flutterProgress = context.logger.progress('Pub get');
   await Process.run('flutter', ['pub get'], workingDirectory: 'packages/$name');
+  await Process.run('dart', ['format .'], workingDirectory: 'packages/$name');
   flutterProgress.cancel();
 }

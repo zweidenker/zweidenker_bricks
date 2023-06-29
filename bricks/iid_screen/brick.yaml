@@ -21,12 +21,16 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  app:
-    type: string
-    description: App Package
-    default: app
-    prompt: What's the name of the App?
   screen:
     type: string
     description: Name of the Screen
     prompt: What's the name of the Screen?
+  directory:
+    type: string
+    description: Subdirectory of lib/src/screens/
+    prompt: In which directory under lib/src/screens/ should this screen be created
+  golden:
+    type: boolean
+    description: Create Golden Test
+    prompt: Include Golden Test
+    default: true

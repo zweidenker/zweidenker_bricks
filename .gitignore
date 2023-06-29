@@ -10,3 +10,4 @@ build/
 
 # IntelliJ and Android Studio
 .idea/
+.DS_Store
