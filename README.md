@@ -26,12 +26,12 @@ dart pub global activate mason_cli
 
 Add `iid_mason_setup` as a global brick
 ```
-mason add iid_mason_setup --git-url https://github.com/zweidenker/zweidenker_bricks --git-path bricks/iid_mason_setup
+mason add -g iid_mason_setup --git-url https://github.com/zweidenker/zweidenker_bricks --git-path bricks/iid_mason_setup
 ```
 
 If you want you can also add the `iid_screen` brick globally as that should be created from the directory of the app
 ```
-mason add iid_screen --git-url https://github.com/zweidenker/zweidenker_bricks --git-path bricks/iid_screen
+mason add -g iid_screen --git-url https://github.com/zweidenker/zweidenker_bricks --git-path bricks/iid_screen
 ```
 
 Navigate to the folder where you want to create the mason bricks and run
