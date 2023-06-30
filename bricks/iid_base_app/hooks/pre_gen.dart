@@ -39,6 +39,11 @@ Future<void> run(HookContext context) async {
     ['pub', 'add', 'provider'],
     workingDirectory: 'packages/$name',
   );
+  await Process.run(
+    'flutter',
+    ['pub', 'add', 'zweidenker_heinzelmen'],
+    workingDirectory: 'packages/$name',
+  );
   await Process.run('flutter', ['pub', 'add', 'mocktail', '--dev'],
       workingDirectory: 'packages/$name');
   flutterProgress.complete(
