@@ -19,6 +19,7 @@ class TestApp extends StatelessWidget {
     return Providers(
       repository: repository,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         locale: locale,
         home: Material(
           child: child,
