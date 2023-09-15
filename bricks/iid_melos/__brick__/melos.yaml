@@ -23,8 +23,8 @@ scripts:
     run: |
       melos exec -c 1 -- \ 
         "flutter gen-l10n"
-    select-package:
-      file-exists:
+    packageFilters:
+      fileExists:
         - l10n.yaml
 
   lint:all:
@@ -48,8 +48,8 @@ scripts:
     run: |
       melos exec -c 1 -- \
         "flutter test"
-    select-package:
-      dir-exists:
+    packageFilters:
+      dirExists:
         - test
       ignore: "*example*"
 
@@ -60,7 +60,7 @@ scripts:
     run: |
       melos exec -c 1 -- \
         "mkdir -p coverage && flutter test --coverage"
-    select-package:
-      dir-exists:
+    packageFilters:
+      dirExists:
         - test
       ignore: "*example*"

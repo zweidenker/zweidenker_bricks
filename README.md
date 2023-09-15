@@ -14,7 +14,6 @@ Collection of [mason](https://github.com/felangel/mason) bricks used at [ZWEIDEN
 | [iid_theme](bricks/iid_theme) | Creates a basic Theme Package |
 | [iid_workflow](bricks/iid_workflow) | Creates a github Workflow based on [flutter_workflows](https://github.com/zweidenker/flutter_workflows) |
 
-
 ## Setup
 
 Activate melos
