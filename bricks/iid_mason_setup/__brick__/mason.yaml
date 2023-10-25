@@ -1,0 +1,29 @@
+bricks:
+  iid_workflow:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_workflow
+  iid_base_app:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_base_app
+  iid_l10n:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_l10n
+  iid_melos:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_melos
+  iid_fastlane_ios:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_fastlane_ios
+  iid_fastlane_android:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_fastlane_android
+  iid_theme:
+    git:
+      url: https://github.com/zweidenker/zweidenker_bricks
+      path: bricks/iid_theme

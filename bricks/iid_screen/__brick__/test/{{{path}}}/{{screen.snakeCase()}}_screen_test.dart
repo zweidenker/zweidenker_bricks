@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:{{package}}/{{{path}}}/{{screen.snakeCase()}}_screen.dart';
@@ -18,7 +19,7 @@ void main() {
     goldenTest(
       '{{screen.pascalCase()}}Screen',
       fileName: '{{screen.paramCase()}}-screen',
-      constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1900),
+      constraints: const BoxConstraints(maxHeight: 955, maxWidth: 485),
       pumpBeforeTest: precacheImages,
       builder: () {
         return TestApp(
