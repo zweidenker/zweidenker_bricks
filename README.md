@@ -17,7 +17,7 @@ Collection of [mason](https://github.com/felangel/mason) bricks used at [ZWEIDEN
 
 ## Setup
 
-Activate melos
+Activate mason
 
 ```
 dart pub global activate mason_cli
