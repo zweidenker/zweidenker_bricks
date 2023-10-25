@@ -70,6 +70,11 @@ grep -qF "$line" "$fileName" || echo "$line" >> "$fileName"
   }
 
   final formattingProgress = context.logger.progress('Formatting');
-  await Process.run('dart', ['format .'], workingDirectory: directory);
-  formattingProgress.complete('Formating complete');
+  final formatting = await Process.run('dart', ['format', '.'], workingDirectory: directory);
+  if (formatting.exitCode == 0) {
+    formattingProgress.complete('Formatting completed\n${formatting.stdout}');
+  } else {
+    formattingProgress.fail('Formatting failed');
+    throw tests.stderr;
+  }
 }
