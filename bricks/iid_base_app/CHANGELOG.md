@@ -1,3 +1,7 @@
-# 0.1.0+1
+# 0.2.0
 
-- TODO: Describe initial release.
+- Use `--empty` for a cleaner base project
+
+# 0.1.0
+
+- Initial Release
