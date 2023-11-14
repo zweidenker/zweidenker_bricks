@@ -16,6 +16,7 @@ Future<void> run(HookContext context) async {
     'flutter',
     [
       'create',
+      '--empty',
       '--platforms=$platforms',
       '--org=$org',
       name,
