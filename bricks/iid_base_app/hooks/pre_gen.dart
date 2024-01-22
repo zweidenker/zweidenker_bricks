@@ -31,6 +31,11 @@ Future<void> run(HookContext context) async {
     workingDirectory: 'packages/$name',
   );
   await Process.run(
+    'mkdir',
+    ['test'],
+    workingDirectory: 'packages/$name',
+  );
+  await Process.run(
     'rm',
     ['-rf', 'widget_test.dart'],
     workingDirectory: 'packages/$name/test',
